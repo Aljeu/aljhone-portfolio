@@ -6,7 +6,7 @@ Aljhone Agnas designs and builds focused digital experiences for local businesse
 
 > Good digital work makes the next step clear. I shape the structure, design the interface, and build the experience around what people need to do.
 
-**Live portfolio:** [Visit Aljhone’s portfolio](https://aljhone-portfolio-wireframes.luckyegret2.chatgpt.site/) · **Available for:** website, landing-page, and digital-product projects.
+**Live portfolio:** [Visit Aljhone’s portfolio](https://aljhone-portfolio.vercel.app/) · **Available for:** website, landing-page, and digital-product projects.
 
 ## What I build
 
