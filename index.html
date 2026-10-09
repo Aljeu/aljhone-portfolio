@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en" data-palette="crimson" data-mode="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Aljhone Agnas is a digital product designer and AI engineer creating websites, landing pages, and digital products. Explore personal projects and start a conversation about yours."
+    />
+    <meta name="theme-color" content="#F5F4F0" />
+    <meta
+      property="og:title"
+      content="Aljhone Agnas — Digital Product Designer & AI Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Websites, landing pages, and digital tools, shaped around what people need to do."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Aljhone Agnas — Digital Product Designer & AI Engineer</title>
+    <script>
+      try {
+        const s = JSON.parse(localStorage.getItem("aljhone-appearance"));
+        if (
+          s &&
+          ["mono", "crimson", "warm"].includes(s.palette) &&
+          ["light", "dark"].includes(s.mode)
+        ) {
+          document.documentElement.dataset.palette = s.palette;
+          document.documentElement.dataset.mode = s.mode;
+        }
+      } catch {}
+    </script>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="wordmark" href="/" aria-label="Aljhone Agnas home"
+        >Aljhone<span class="wordmark-dot" aria-hidden="true"></span
+      ></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#work">Work</a><a href="#about">About</a
+        ><a href="#services">Services</a
+        ><a class="nav-contact" href="#contact"
+          >Let’s talk
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19 19 5M5 5h14v14" /></svg
+        ></a>
+      </nav>
+      <details class="appearance">
+        <summary aria-label="Change appearance">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 3a9 9 0 1 0 0 18c2 0 3-1 3-2s-1-2 0-3 3 0 4-1c3-3 1-12-7-12Z"
+            />
+            <circle cx="7" cy="10" r=".7" />
+            <circle cx="10" cy="7" r=".7" />
+            <circle cx="15" cy="7" r=".7" /></svg
+          ><span>Appearance</span>
+        </summary>
+        <div class="appearance-panel">
+          <fieldset>
+            <legend>Color palette</legend>
+            <div class="palette-options">
+              <button data-palette="mono" aria-pressed="false">
+                <i class="swatch mono"></i>Mono</button
+              ><button data-palette="crimson" aria-pressed="true">
+                <i class="swatch crimson"></i>Crimson</button
+              ><button data-palette="warm" aria-pressed="false">
+                <i class="swatch warm"></i>Warm
+              </button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Light or dark</legend>
+            <div class="mode-options">
+              <button data-mode="light" aria-pressed="true">Light</button
+              ><button data-mode="dark" aria-pressed="false">Dark</button>
+            </div>
+          </fieldset>
+          <p>Your choice stays on this device.</p>
+        </div>
+      </details>
+    </header>
+    <main id="main">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-shader" aria-hidden="true"></div>
+        <div class="hero-reading-veil" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="role">Digital Product Designer &amp; AI Engineer</p>
+          <h1 id="hero-title" class="hero-title">
+            <span class="sr-only"
+              >Websites. Webapps. Digital Products. Agentic workflow.</span
+            >
+            <span class="hero-typewriter" data-hero-typewriter aria-hidden="true">
+              <span class="hero-typewriter-text" data-hero-typewriter-text
+                >Websites.</span
+              >
+              <span class="hero-typewriter-static"
+                >Websites. Webapps. Digital Products. Agentic workflow.</span
+              >
+              <span class="hero-typewriter-caret"></span>
+            </span>
+          </h1>
+          <p class="hero-support">
+            Landing pages and digital tools, shaped around what people need to
+            do.
+          </p>
+          <a class="button hero-action" href="#work"
+            >Explore selected work
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19 19 5M5 5h14v14" /></svg
+          ></a>
+        </div>
+        <div class="hero-portrait" aria-hidden="true">
+          <img
+            src="/images/portrait.webp"
+            width="1672"
+            height="941"
+            alt=""
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="portrait-reflection"></div>
+        </div>
+        <a class="hero-scroll" href="#work" aria-label="Scroll to selected work">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4v16M6 14l6 6 6-6" />
+          </svg>
+        </a>
+      </section>
+      <section class="section shell" id="work" aria-labelledby="work-title">
+        <div class="section-intro">
+          <div>
+            <h2 id="work-title">
+              Selected work<span class="accent-dot">.</span>
+            </h2>
+            <p class="section-statement">
+              Different ideas. One considered approach.
+            </p>
+          </div>
+          <div class="intro-aside">
+            <p>
+              A town website. A transaction dashboard. A musical experiment.
+              Personal projects that turn information into something useful.
+            </p>
+            <a class="text-link" href="#archive"
+              >Browse all projects
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h16m-6-6 6 6-6 6" /></svg
+            ></a>
+          </div>
+        </div>
+        <div
+          class="work-catalogue"
+          role="region"
+          aria-label="Selected project catalogue"
+        >
+          <button
+            class="catalogue-arrow catalogue-previous"
+            id="work-previous"
+            aria-label="Previous projects"
+            aria-controls="selected-projects"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 12H4m6-6-6 6 6 6" />
+            </svg>
+          </button>
+          <div class="selected-gallery" id="selected-projects"></div>
+          <button
+            class="catalogue-arrow catalogue-next"
+            id="work-next"
+            aria-label="Next projects"
+            aria-controls="selected-projects"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12h16m-6-6 6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+        <p
+          class="catalogue-position"
+          id="work-position"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+      </section>
+      <section class="about-band" id="about" aria-labelledby="about-title">
+        <div class="shell section about-layout">
+          <div>
+            <h2 id="about-title">
+              I’m Aljhone.<br />I follow an idea<br />through to the build<span
+                class="accent-dot"
+                >.</span
+              >
+            </h2>
+            <div class="profile-line">
+              <img
+                src="/images/avatar.jpg"
+                alt="Aljhone Agnas"
+                width="64"
+                height="64"
+                loading="lazy"
+                onerror="this.hidden = true"
+              />
+              <p>Aljhone Agnas<br /><span>Designer &amp; AI Engineer</span></p>
+            </div>
+          </div>
+          <div class="about-copy">
+            <p class="lead">
+              I care about what happens after someone lands on a page.
+            </p>
+            <p>
+              Can they understand the offer? Find the information they came for?
+              Use the tool without getting lost?
+            </p>
+            <p>
+              Those questions guide my work, from landing pages to dashboards
+              and interactive products. I shape the structure, design the
+              interface, and build the experience.
+            </p>
+            <div class="social-links">
+              <a
+                class="text-link"
+                href="https://www.linkedin.com/in/aljhoneagnas/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn
+                <span class="external-label">(opens in new tab)</span></a
+              ><a
+                class="text-link"
+                href="https://github.com/Aljeu"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub
+                <span class="external-label">(opens in new tab)</span></a
+              >
+            </div>
+            <div class="resume">
+              <button disabled aria-describedby="resume-note">
+                Download résumé
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4" />
+                </svg></button
+              ><span id="resume-note">Coming soon</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="section shell"
+        id="services"
+        aria-labelledby="services-title"
+      >
+        <div class="section-intro">
+          <div>
+            <h2 id="services-title">
+              Let’s make it useful<span class="accent-dot">.</span>
+            </h2>
+            <p class="section-statement">Start with what you need it to do.</p>
+          </div>
+          <div class="intro-aside">
+            <p>
+              A page to introduce your business. A home for your work. A tool
+              that brings scattered information together.
+            </p>
+            <a class="text-link" href="#contact"
+              >Tell me what you have in mind
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 19 19 5M5 5h14v14" /></svg
+            ></a>
+          </div>
+        </div>
+        <div class="service-list">
+          <article>
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <rect x="3" y="5" width="26" height="22" rx="2" />
+              <path d="M3 11h26M8 8h1m3 0h1M8 16h8m-8 5h16" />
+            </svg>
+            <h3>Websites &amp;<br />landing pages</h3>
+            <p>
+              Introduce your services, explain your offer, and give visitors a
+              clear route to inquiry.
+            </p>
+            <ul>
+              <li>Content structure</li>
+              <li>Interface design</li>
+              <li>Responsive build</li>
+            </ul>
+          </article>
+          <article>
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <rect x="3" y="3" width="11" height="11" rx="2" />
+              <rect x="18" y="3" width="11" height="26" rx="2" />
+              <rect x="3" y="18" width="11" height="11" rx="2" />
+            </svg>
+            <h3>Digital<br />products</h3>
+            <p>
+              Turn information into dashboards, tools, and interactive
+              experiences people can navigate.
+            </p>
+            <ul>
+              <li>Information design</li>
+              <li>Interaction</li>
+              <li>Frontend implementation</li>
+            </ul>
+          </article>
+        </div>
+        <div class="supporting">
+          <h3>Ideas beyond the interface.</h3>
+          <div>
+            <p>
+              <strong>AI engineering</strong> for agentic workflows in research,
+              reporting, and documentation, with human review.
+            </p>
+            <p>
+              <strong>Brand foundations</strong> through typography, color, and
+              a consistent visual direction.
+            </p>
+            <p class="small">Current areas of development.</p>
+          </div>
+        </div>
+      </section>
+      <section class="process-band">
+        <div class="shell section">
+          <div class="process-intro">
+            <h2>
+              From the first conversation<br />to the finished build<span
+                class="accent-dot"
+                >.</span
+              >
+            </h2>
+            <p>We agree on the direction before moving into implementation.</p>
+          </div>
+          <ol class="process">
+            <li>
+              <h3>Define</h3>
+              <p>Audience, goals, scope, and content.</p>
+            </li>
+            <li>
+              <h3>Design</h3>
+              <p>Structure, layout, and visual direction.</p>
+            </li>
+            <li>
+              <h3>Build</h3>
+              <p>Implement the agreed experience and review its behavior.</p>
+            </li>
+            <li>
+              <h3>Refine</h3>
+              <p>Resolve revisions and prepare the handover.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section
+        class="section shell"
+        id="archive"
+        aria-labelledby="archive-title"
+      >
+        <div class="section-intro archive-intro">
+          <div>
+            <h2 id="archive-title">
+              The project archive<span class="accent-dot">.</span>
+            </h2>
+            <p>
+              Websites, web apps, and desktop tools. A growing collection of
+              personal work.
+            </p>
+          </div>
+          <div class="filters" role="group" aria-label="Filter projects">
+            <button data-category="All" aria-pressed="true">All</button
+            ><button data-category="Websites" aria-pressed="false">
+              Websites</button
+            ><button data-category="Web apps" aria-pressed="false">
+              Web apps</button
+            ><button data-category="Apps" aria-pressed="false">Apps</button>
+          </div>
+        </div>
+        <p
+          class="sr-only"
+          id="filter-status"
+          role="status"
+          aria-live="polite"
+        ></p>
+        <div id="archive-projects" class="archive-list"></div>
+        <div class="future-slot">
+          <span>Future project / Placeholder</span>
+          <p>A new website, tool, or experiment will have a home here.</p>
+          <span>More to come</span>
+        </div>
+      </section>
+      <section
+        class="contact shell"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <h2 id="contact-title">
+          Let’s give your idea<br />a place on the web<span>.</span>
+        </h2>
+        <div class="contact-bottom">
+          <div>
+            <p>
+              Tell me what you’re building, who it’s for,<br />and what it needs
+              to do.
+            </p>
+            <p class="small">Open to roles and collaborations, too.</p>
+          </div>
+          <a class="contact-link" href="mailto:agnasaljhone@gmail.com"
+            >Email Aljhone
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19 19 5M5 5h14v14" /></svg
+            ><span>agnasaljhone@gmail.com</span></a
+          >
+        </div>
+      </section>
+      <section
+        id="project-detail"
+        class="project-detail shell section"
+        hidden
+        aria-labelledby="detail-title"
+      ></section>
+    </main>
+    <footer class="site-footer shell">
+      <a class="wordmark" href="#main"
+        >Aljhone<span class="wordmark-dot" aria-hidden="true"></span
+      ></a>
+      <p>© <span id="year">2026</span> Aljhone Agnas</p>
+      <a class="text-link" href="#main"
+        >Back to top
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 20V4M6 10l6-6 6 6" /></svg
+      ></a>
+    </footer>
+    <noscript
+      ><div class="shell section">
+        Project browsing requires JavaScript.
+        <a href="https://github.com/Aljeu"
+          >View all public projects on GitHub</a
+        >
+        or <a href="mailto:agnasaljhone@gmail.com">email Aljhone</a>.
+      </div></noscript
+    >
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
