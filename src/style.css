@@ -2000,7 +2000,7 @@ legend {
     text-align: center;
     font-size: clamp(3rem, 9vw, 8.5rem);
     line-height: 1.04;
-    letter-spacing: -0.055em;
+    letter-spacing: -0.04em;
   }
 
   .hero > .hero-action {
@@ -2137,7 +2137,7 @@ legend {
     text-align: center;
     font-size: clamp(1.95rem, 10.5vw, 3.3rem);
     line-height: 1.08;
-    letter-spacing: -0.055em;
+    letter-spacing: -0.04em;
   }
 
   :root[data-mode="light"] .hero > .hero-title {
