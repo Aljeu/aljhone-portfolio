@@ -38,6 +38,53 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      width="0"
+      height="0"
+      style="position: absolute; overflow: hidden"
+    >
+      <filter id="portrait-duotone-crimson" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          values="0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0 0 0 1 0"
+        />
+        <feComponentTransfer>
+          <feFuncR type="table" tableValues="0 1" />
+          <feFuncG type="table" tableValues="0 0.1608" />
+          <feFuncB type="table" tableValues="0 0.2157" />
+        </feComponentTransfer>
+      </filter>
+      <filter id="portrait-duotone-mono" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          values="0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0 0 0 1 0"
+        />
+        <feComponentTransfer>
+          <feFuncR type="table" tableValues="0 0.6941" />
+          <feFuncG type="table" tableValues="0 0.6941" />
+          <feFuncB type="table" tableValues="0 0.6745" />
+        </feComponentTransfer>
+      </filter>
+      <filter id="portrait-duotone-warm" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          values="0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0 0 0 1 0"
+        />
+        <feComponentTransfer>
+          <feFuncR type="table" tableValues="0 0.902" />
+          <feFuncG type="table" tableValues="0 0.6549" />
+          <feFuncB type="table" tableValues="0 0.3569" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
     <header class="site-header shell">
       <a class="wordmark" href="/" aria-label="Aljhone Agnas home"
         >Aljhone<span class="wordmark-dot" aria-hidden="true"></span
@@ -60,7 +107,7 @@
             <circle cx="7" cy="10" r=".7" />
             <circle cx="10" cy="7" r=".7" />
             <circle cx="15" cy="7" r=".7" /></svg
-          ><span>Appearance</span>
+          >
         </summary>
         <div class="appearance-panel">
           <fieldset>
@@ -92,30 +139,30 @@
         <div class="hero-reading-veil" aria-hidden="true"></div>
         <div class="hero-copy">
           <p class="role">Digital Product Designer &amp; AI Engineer</p>
-          <h1 id="hero-title" class="hero-title">
-            <span class="sr-only"
-              >Websites. Webapps. Digital Products. Agentic workflow.</span
-            >
-            <span class="hero-typewriter" data-hero-typewriter aria-hidden="true">
-              <span class="hero-typewriter-text" data-hero-typewriter-text
-                >Websites.</span
-              >
-              <span class="hero-typewriter-static"
-                >Websites. Webapps. Digital Products. Agentic workflow.</span
-              >
-              <span class="hero-typewriter-caret"></span>
-            </span>
-          </h1>
           <p class="hero-support">
             Landing pages and digital tools, shaped around what people need to
             do.
           </p>
-          <a class="button hero-action" href="#work"
-            >Explore selected work
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 19 19 5M5 5h14v14" /></svg
-          ></a>
         </div>
+        <h1 id="hero-title" class="hero-title">
+          <span class="sr-only"
+            >Websites. Webapps. Digital Products. Agentic workflow.</span
+          >
+          <span class="hero-typewriter" data-hero-typewriter aria-hidden="true">
+            <span class="hero-typewriter-text" data-hero-typewriter-text
+              >Websites.</span
+            >
+            <span class="hero-typewriter-static"
+              >Websites. Webapps. Digital Products. Agentic workflow.</span
+            >
+            <span class="hero-typewriter-caret"></span>
+          </span>
+        </h1>
+        <a class="button hero-action" href="#work"
+          >Explore selected work
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19 19 5M5 5h14v14" /></svg
+        ></a>
         <div class="hero-portrait" aria-hidden="true">
           <img
             src="/images/portrait.webp"
