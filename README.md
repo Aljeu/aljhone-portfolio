@@ -1,8 +1,8 @@
-# Aljhone Agnas — Digital Product Designer & AI Engineer
+# Aljhone Agnas — Design Engineer | Applied AI & Digital Products
 
-**Websites. Web apps. Digital products. Agentic workflows.**
+**Websites. Web apps. Digital products. Applied AI.**
 
-Aljhone Agnas designs and builds focused digital experiences for local businesses, independent professionals, and ambitious teams. His work brings product thinking, interface design, and frontend engineering together—from a clear landing page to a practical web app or AI-enabled workflow.
+Aljhone Agnas designs and builds websites, landing pages, digital products, and practical AI-assisted workflows for local businesses, independent professionals, and teams. His work brings product thinking, interface design, and frontend implementation together—from a clear landing page to a useful web app or human-reviewed AI workflow.
 
 > Good digital work makes the next step clear. I shape the structure, design the interface, and build the experience around what people need to do.
 
@@ -12,8 +12,8 @@ Aljhone Agnas designs and builds focused digital experiences for local businesse
 
 - **Landing pages and business websites** — clear positioning, useful content structure, responsive interfaces, and direct paths to inquire or take action.
 - **Web apps and digital products** — practical dashboards, searchable information, and product experiences that make complex tasks easier to use.
-- **AI-enabled tools and agentic workflows** — thoughtful automation that supports a real task and keeps people in control.
-- **Product design and frontend engineering** — from early structure and interaction decisions through implementation and refinement.
+- **Applied AI and agentic workflows** — practical workflow design for research, reporting, and documentation, with human review at key steps.
+- **Design engineering** — interface structure, interaction, and frontend implementation from early direction through refinement.
 
 Aljhone is especially interested in helping local businesses and individual clients establish a stronger digital presence, and is open to projects with teams and organizations that need a considered design-and-build partner.
 

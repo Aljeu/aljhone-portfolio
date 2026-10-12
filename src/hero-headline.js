@@ -1,8 +1,8 @@
 const phrases = [
   "Websites.",
-  "Webapps.",
-  "Digital Products.",
-  "Agentic workflow.",
+  "Web apps.",
+  "Digital products.",
+  "AI workflows.",
 ];
 
 const TYPE_SPEED = 62;

@@ -501,8 +501,8 @@ legend {
 .role {
   font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--hero-muted);
   margin-bottom: 22px;
 }
@@ -1763,7 +1763,7 @@ legend {
   }
   .role {
     max-width: none;
-    font-size: 0.7rem;
+    font-size: 0.8125rem;
     margin-bottom: 16px;
   }
   .hero-support {
