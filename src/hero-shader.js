@@ -8,9 +8,9 @@ export const HERO_SHADER_PALETTES = {
     light: { colors: ["#F5F4F0", "#D3D3CF", "#A2A5A5"], brightness: 1.2 },
     dark: { colors: ["#282A2B", "#868D91", "#535B61"], brightness: 1.05 },
   },
-  warm: {
-    light: { colors: ["#F5F1E8", "#E5B485", "#C87957"], brightness: 1.2 },
-    dark: { colors: ["#43281D", "#C66E3C", "#E6A75B"], brightness: 1.05 },
+  royal: {
+    light: { colors: ["#FFF6E5", "#8BB8FF", "#1F5AA6"], brightness: 1.15 },
+    dark: { colors: ["#081A3D", "#1F5AA6", "#8BB8FF"], brightness: 1.0 },
   },
 };
 

@@ -1,5 +1,11 @@
 import projects from "./data/projects.json";
 import { initHeroHeadline } from "./hero-headline.js";
+import { initWordTyping } from "./about-typing.js";
+import { initServicesSweep } from "./services-sweep.js";
+import { initFooterMesh } from "./footer-mesh.js";
+
+const disposeFooterMesh = initFooterMesh(document.querySelector(".footer-mesh"));
+if (import.meta.hot) import.meta.hot.dispose(disposeFooterMesh);
 
 const escape = (value = "") =>
   String(value).replace(
@@ -22,105 +28,134 @@ const imageUrl = (value) =>
   /^\/[a-zA-Z0-9/_-]+\.(webp|png|jpg|jpeg|svg)$/.test(value)
     ? value
     : "";
-const arrow =
-  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg>';
+const previewVideoUrl = (value) =>
+  typeof value === "string" &&
+  /^\/projects\/previews\/[a-z-]+-preview\.mp4$/.test(value)
+    ? value
+    : "";
 const actualProjects = projects.filter((project) => !project.placeholder);
 const projectLink = (project) => `#project/${encodeURIComponent(project.id)}`;
 const selected = document.querySelector("#selected-projects");
-const archive = document.querySelector("#archive-projects");
-const status = document.querySelector("#filter-status");
 const detail = document.querySelector("#project-detail");
 const homepageSections = [...document.querySelector("#main").children].filter(
   (element) => element !== detail,
 );
 const pageTitle = document.title;
 
-const catalogueMedia = matchMedia("(max-width: 760px)");
-let catalogueIndex = 0;
-
-function renderSelected() {
-  const count = catalogueMedia.matches ? 1 : 2;
-  catalogueIndex =
-    ((catalogueIndex % actualProjects.length) + actualProjects.length) %
-    actualProjects.length;
-  selected.innerHTML = Array.from({ length: count }, (_, offset) =>
-    actualProjects[(catalogueIndex + offset) % actualProjects.length],
-  )
-    .map(
-      (project) => `
-  <article class="project-card project-${escape(project.id)}">
-    <a class="project-cover" href="${projectLink(project)}" aria-label="Explore ${escape(project.title)}">
-      <img src="${imageUrl(project.image)}" alt="${escape(project.imageAlt)}" loading="lazy" decoding="async" width="1440" height="900">
-      <span class="project-cover-action" aria-hidden="true">Explore project ${arrow}</span>
-    </a>
-    <div class="project-meta"><span>${escape(project.category)}</span><span>${escape(project.status)}</span></div>
-    <h3 class="project-title"><a href="${projectLink(project)}">${escape(project.title)} ${arrow}</a></h3>
-    <p class="project-summary">${escape(project.summary)}</p>
-  </article>`,
-    )
-    .join("");
-  const previous = document.querySelector("#work-previous");
-  const next = document.querySelector("#work-next");
-  const position = document.querySelector("#work-position");
-  if (previous) previous.disabled = false;
-  if (next) next.disabled = false;
-  if (position)
-    position.textContent = `${catalogueIndex + 1} / ${actualProjects.length}`;
-}
-document.querySelector("#work-previous")?.addEventListener("click", () => {
-  catalogueIndex =
-    (catalogueIndex - 1 + actualProjects.length) % actualProjects.length;
-  renderSelected();
-});
-document.querySelector("#work-next")?.addEventListener("click", () => {
-  catalogueIndex = (catalogueIndex + 1) % actualProjects.length;
-  renderSelected();
-});
-catalogueMedia.addEventListener("change", renderSelected);
-renderSelected();
-
-function renderArchive(category = "All") {
-  const visible = actualProjects.filter(
-    (project) => category === "All" || project.category === category,
-  );
-  archive.innerHTML = visible
-    .map(
-      (project) => `
-    <a class="archive-row" href="${projectLink(project)}">
-      <span class="archive-row-title">${escape(project.title)}<span class="archive-row-summary">${escape(project.summary)}</span></span>
-      <span class="archive-category">${escape(project.category)}</span>
-      <span class="archive-status">${escape(project.status)}</span>
-      <span class="archive-arrow" aria-hidden="true">${arrow}</span>
-    </a>`,
-    )
-    .join("");
-  status.textContent = `${visible.length} ${visible.length === 1 ? "project" : "projects"} shown${category === "All" ? "" : ` in ${category}`}.`;
-  document
-    .querySelectorAll("[data-category]")
-    .forEach((button) =>
-      button.setAttribute(
-        "aria-pressed",
-        String(button.dataset.category === category),
-      ),
-    );
-  const future = projects.find((project) => project.placeholder);
-  const futureSlot = document.querySelector(".future-slot");
-  futureSlot.hidden =
-    !future || (category !== "All" && category !== future.category);
-  if (future) {
-    futureSlot.innerHTML = `<span>${escape(future.status)}</span><p>${escape(future.title)}<span class="future-description">${escape(future.summary)}</span></p><span>More to come</span>`;
+const replayAbout = initWordTyping(
+  document.querySelector("#about"),
+  "[data-about-typing]",
+  "About",
+);
+const replayStories = initWordTyping(
+  document.querySelector("#stories"),
+  "[data-stories-typing]",
+  "Stories",
+);
+initServicesSweep(document.querySelector("#services-title"));
+function scrollSection(target, behavior = "smooth") {
+  if (!["about", "services"].includes(target.id)) {
+    target.scrollIntoView({ block: "start", behavior });
+    return;
   }
+  const headerHeight = document.querySelector(".site-header").getBoundingClientRect().height;
+  const rect = target.getBoundingClientRect();
+  const spare = Math.max(0, window.innerHeight - headerHeight - rect.height);
+  window.scrollTo({ top: Math.max(0, window.scrollY + rect.top - headerHeight - spare / 2), behavior });
 }
-document.querySelector(".filters").addEventListener("click", (event) => {
-  const button = event.target.closest("[data-category]");
-  if (button) renderArchive(button.dataset.category);
+
+let catalogueIndex = 0;
+const indicators = document.querySelector("#work-indicators");
+const catalogueMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+selected.innerHTML = actualProjects.map((project, index) => `
+  <article class="stack-slide" aria-labelledby="selected-title-${escape(project.id)}" data-index="${index}">
+    <div class="stack-copy">
+      <p class="stack-category">${escape(project.category)} · ${escape(project.status)}</p>
+      <h3 id="selected-title-${escape(project.id)}">${escape(project.title)}</h3>
+      <p class="stack-description">${escape(project.description)}</p>
+      <p class="stack-role">${escape(project.role)}</p>
+      <ul class="stack-tags" aria-label="Technologies">${project.stack.map(item => `<li>${escape(item)}</li>`).join("")}</ul>
+      <div class="stack-links">
+        <a href="${projectLink(project)}">View project</a>
+        ${externalLink(project.repo, "GitHub")}
+      </div>
+    </div>
+    <figure class="stack-media">
+      ${previewVideoUrl(project.previewVideo)
+        ? `<video class="stack-preview-video" muted playsinline loop preload="none" poster="${imageUrl(project.image)}" role="img" aria-label="Video preview of ${escape(project.title)}"><source data-src="${escape(previewVideoUrl(project.previewVideo))}" type="video/mp4"><img src="${imageUrl(project.image)}" alt="${escape(project.imageAlt)}" loading="lazy" decoding="async" width="1440" height="900"></video>`
+        : `<img src="${imageUrl(project.image)}" alt="${escape(project.imageAlt)}" loading="lazy" decoding="async" width="1440" height="900">`}
+    </figure>
+  </article>`).join("");
+indicators.innerHTML = actualProjects.map((project, index) => `
+  <button class="stack-dot" type="button" aria-label="Show ${escape(project.title)}" aria-controls="selected-projects" aria-current="${index === 0}" data-index="${index}"></button>`).join("");
+const catalogueSlides = [...selected.children];
+const catalogueDots = [...indicators.children];
+
+function announceSelected(index) {
+  catalogueIndex = index;
+  catalogueDots.forEach((dot, i) => dot.setAttribute("aria-current", String(i === index)));
+  document.querySelector("#work-position").textContent = `${String(index + 1).padStart(2, "0")} / ${String(actualProjects.length).padStart(2, "0")} — ${actualProjects[index].title}`;
+}
+function selectProject(index) {
+  index = Math.max(0, Math.min(actualProjects.length - 1, index));
+  selected.scrollTo({
+    top: catalogueSlides[index].offsetTop - catalogueSlides[0].offsetTop,
+    behavior: catalogueMotion.matches ? "instant" : "smooth",
+  });
+}
+indicators.addEventListener("click", event => {
+  const dot = event.target.closest("button[data-index]");
+  if (dot) selectProject(Number(dot.dataset.index));
 });
-renderArchive();
+selected.addEventListener("keydown", event => {
+  if (event.target !== selected) return;
+  if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+    event.preventDefault();
+    selectProject(event.key === "Home" ? 0 : event.key === "End" ? actualProjects.length - 1 : catalogueIndex + (event.key === "ArrowDown" ? 1 : -1));
+  }
+});
+const catalogueObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (entry.isIntersecting && entry.intersectionRatio >= 0.6) announceSelected(Number(entry.target.dataset.index));
+  }
+}, { root: selected, threshold: 0.6 });
+catalogueSlides.forEach(slide => catalogueObserver.observe(slide));
+announceSelected(0);
+
+const projectPreviewVideos = [...selected.querySelectorAll(".stack-preview-video")];
+if ("IntersectionObserver" in window && projectPreviewVideos.length) {
+  const previewObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      const video = entry.target;
+      if (catalogueMotion.matches || !entry.isIntersecting || entry.intersectionRatio < 0.55) {
+        video.pause();
+        continue;
+      }
+      const source = video.querySelector("source");
+      if (!source.getAttribute("src")) {
+        source.setAttribute("src", source.dataset.src);
+        video.load();
+      }
+      video.play().catch(() => {});
+    }
+  }, { threshold: 0.55 });
+  projectPreviewVideos.forEach((video) => previewObserver.observe(video));
+  catalogueMotion.addEventListener("change", () => {
+    projectPreviewVideos.forEach((video) => {
+      if (catalogueMotion.matches) video.pause();
+      else {
+        previewObserver.unobserve(video);
+        previewObserver.observe(video);
+      }
+    });
+  });
+}
 
 function externalLink(url, label) {
   const safeUrl = externalUrl(url);
   return safeUrl
-    ? `<a class="project-link" href="${escape(safeUrl)}" target="_blank" rel="noopener noreferrer">${escape(label)} ${arrow}<span class="sr-only"> (opens in new tab)</span></a>`
+    ? `<a class="project-link" href="${escape(safeUrl)}" target="_blank" rel="noopener noreferrer">${escape(label)}<span class="sr-only"> (opens in new tab)</span></a>`
     : "";
 }
 
@@ -131,12 +166,12 @@ function showProject(project) {
   detail.hidden = false;
   document.title = `${project.title} — Aljhone Agnas`;
   detail.innerHTML = `
-    <a class="detail-back text-link" href="#work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6"/></svg> Selected work</a>
+    <a class="detail-back text-link" href="#work">Selected work</a>
     <header class="detail-header"><div class="detail-meta"><span>${escape(project.category)}</span><span>${escape(project.status)}</span></div><h1 id="detail-title" tabindex="-1">${escape(project.title)}</h1><p class="lead">${escape(project.summary)}</p></header>
     <figure class="detail-cover"><img src="${imageUrl(project.image)}" alt="${escape(project.imageAlt)}" width="1440" height="900" decoding="async"><figcaption>${escape(project.imageKind)}</figcaption></figure>
     <div class="detail-grid"><div class="detail-content"><h2>The idea</h2><p>${escape(project.description)}</p>${project.decisions?.length ? `<h2>Design considerations</h2><ul>${project.decisions.map((decision) => `<li>${escape(decision)}</li>`).join("")}</ul>` : ""}<h2>Project context</h2><p>${escape(project.context)}</p></div>
     <aside class="detail-aside"><h2>Role</h2><p>${escape(project.role)}</p>${project.stack?.length ? `<h2>Built with</h2><ul class="stack-list">${project.stack.map((item) => `<li>${escape(item)}</li>`).join("")}</ul>` : ""}<div class="detail-links">${externalLink(project.url, "Open live project")}${externalLink(project.repo, "View public repository")}</div></aside></div>
-    <div class="detail-next"><a class="text-link" href="#archive">Explore the project archive ${arrow}</a><a class="text-link" href="#contact">Have a project in mind? ${arrow}</a></div>`;
+    <div class="detail-next"><a class="text-link" href="/projects.html">Explore the project archive</a><a class="text-link" href="#contact">Have a project in mind?</a></div>`;
   window.scrollTo({ top: 0, behavior: "instant" });
   document.querySelector("#detail-title").focus({ preventScroll: true });
 }
@@ -164,13 +199,8 @@ function navigate() {
       showProject(project);
       return;
     }
-    // Unknown project bookmarks return to the archive without trapping visitors.
-    history.replaceState(
-      { section: "archive" },
-      "",
-      location.pathname + location.search,
-    );
-    hash = "#archive";
+    location.replace("/projects.html");
+    return;
   }
   const returnedFromDetail = showHomepage();
   if (returnedFromDetail) {
@@ -179,12 +209,7 @@ function navigate() {
         hash.slice(1) || history.state?.section || "main",
       ) || document.querySelector("#main");
     requestAnimationFrame(() => {
-      target.scrollIntoView({
-        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-        block: "start",
-      });
+      scrollSection(target, matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth");
       const heading = target.querySelector("h1, h2") || target;
       if (!heading.hasAttribute("tabindex"))
         heading.setAttribute("tabindex", "-1");
@@ -195,14 +220,19 @@ function navigate() {
 window.addEventListener("hashchange", navigate);
 window.addEventListener("popstate", navigate);
 
-// Only project URLs are bookmarks. A normal homepage refresh starts at the hero.
+// Explicit section links work across pages; ordinary homepage reloads start at the hero.
 history.scrollRestoration = "manual";
 if (!location.hash.startsWith("#project/")) {
+  const initialSection = ["#work", "#about", "#services", "#contact"].includes(location.hash)
+    ? document.getElementById(location.hash.slice(1))
+    : null;
   history.replaceState(null, "", location.pathname + location.search);
   window.scrollTo({ top: 0, behavior: "instant" });
   window.addEventListener(
     "load",
-    () => window.scrollTo({ top: 0, behavior: "instant" }),
+    () => initialSection
+      ? scrollSection(initialSection, "instant")
+      : window.scrollTo({ top: 0, behavior: "instant" }),
     { once: true },
   );
 }
@@ -228,18 +258,15 @@ document.addEventListener("click", (event) => {
   const target = document.getElementById(id);
   if (!target) return;
   event.preventDefault();
+  if (id === "about") replayAbout();
+  if (id === "stories") replayStories();
   const returnedFromDetail = showHomepage();
   const state = { section: id };
   const url = location.pathname + location.search;
   if (returnedFromDetail) history.pushState(state, "", url);
   else history.replaceState(state, "", url);
   requestAnimationFrame(() => {
-    target.scrollIntoView({
-      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "instant"
-        : "smooth",
-      block: "start",
-    });
+    scrollSection(target, matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth");
     if (returnedFromDetail || link.classList.contains("skip-link")) {
       const heading = target.querySelector("h1, h2") || target;
       if (!heading.hasAttribute("tabindex"))
@@ -250,16 +277,50 @@ document.addEventListener("click", (event) => {
 });
 
 const header = document.querySelector(".site-header");
+const sectionLinks = [...header.querySelectorAll('.main-nav a[href^="#"]')];
+const navigationSections = sectionLinks.map((link) => ({
+  link,
+  section: document.getElementById(link.hash.slice(1)),
+}));
+function syncActiveNavigation() {
+  const readingPosition = header.getBoundingClientRect().bottom +
+    Math.max(0, window.innerHeight - header.getBoundingClientRect().bottom) / 2;
+  const active = navigationSections.find(({ section }) => {
+    if (!section || section.closest("[hidden]")) return false;
+    const rect = section.getBoundingClientRect();
+    const bottom = section.id === "contact"
+      ? document.documentElement.scrollHeight - window.scrollY
+      : rect.bottom;
+    return rect.top <= readingPosition && bottom > readingPosition;
+  });
+  sectionLinks.forEach((link) => {
+    if (link === active?.link) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}
 function syncHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 16);
+  syncActiveNavigation();
 }
 function measureHeader() {
   document.documentElement.style.setProperty(
     "--header-height",
     `${Math.ceil(header.getBoundingClientRect().height)}px`,
   );
+  syncActiveNavigation();
 }
-window.addEventListener("scroll", syncHeader, { passive: true });
+let headerFrame = 0;
+function scheduleHeaderSync() {
+  if (headerFrame) return;
+  headerFrame = requestAnimationFrame(() => {
+    headerFrame = 0;
+    syncHeader();
+  });
+}
+window.addEventListener("scroll", scheduleHeaderSync, { passive: true });
+window.addEventListener("resize", scheduleHeaderSync);
+window.addEventListener("hashchange", scheduleHeaderSync);
+window.addEventListener("popstate", scheduleHeaderSync);
 new ResizeObserver(measureHeader).observe(header);
 syncHeader();
 measureHeader();
@@ -287,7 +348,7 @@ import("./hero-shader.js")
 const themeColors = {
   crimson: { dark: "#7B171C", light: "#F5F4F0" },
   mono: { dark: "#343430", light: "#F5F4F0" },
-  warm: { dark: "#66321F", light: "#F5F1E8" },
+  royal: { dark: "#081A3D", light: "#FFF6E5" },
 };
 
 function syncAppearance() {
@@ -326,7 +387,7 @@ appearance.addEventListener("click", (event) => {
   if (!button) return;
   if (
     button.dataset.palette &&
-    ["mono", "crimson", "warm"].includes(button.dataset.palette)
+    ["mono", "crimson", "royal"].includes(button.dataset.palette)
   )
     root.dataset.palette = button.dataset.palette;
   if (button.dataset.mode && ["dark", "light"].includes(button.dataset.mode))

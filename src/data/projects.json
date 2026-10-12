@@ -1,12 +1,16 @@
 [
   {
     "id": "goa",
-    "title": "Goa",
+    "title": "Goa Civic Website",
     "category": "Websites",
     "summary": "Civic information meets destination storytelling.",
     "description": "An independent civic and tourism website concept for Goa, Camarines Sur. The design brings resident services and visitor information into one warm, readable experience.",
     "role": "Personal project · Sole creator",
-    "stack": ["HTML", "CSS", "JavaScript"],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
     "repo": "https://github.com/Aljeu/goa-camsur-website",
     "url": "https://goa-camsur-website.vercel.app",
     "image": "/projects/goa.webp",
@@ -20,7 +24,8 @@
       "Two audiences, one navigation: resident services and tourism information.",
       "A shared visual language balances civic clarity with a welcoming destination feel.",
       "Theme and accessibility controls are part of the documented interface."
-    ]
+    ],
+    "previewVideo": "/projects/previews/goa-preview.mp4"
   },
   {
     "id": "gcash",
@@ -29,7 +34,11 @@
     "summary": "Turning transaction messages into a readable overview.",
     "description": "A personal dashboard that organizes transaction messages into spending patterns, balances, and a searchable ledger. An expressive visual hierarchy makes the overview distinct from the detailed transaction view.",
     "role": "Personal project · Sole creator",
-    "stack": ["JavaScript", "Python", "SQLite"],
+    "stack": [
+      "JavaScript",
+      "Python",
+      "SQLite"
+    ],
     "repo": "https://github.com/Aljeu/gcash-dashboard",
     "url": "https://gcash-dashboard-public.vercel.app",
     "image": "/projects/gcash.webp",
@@ -43,7 +52,8 @@
       "A summary-first overview with a transaction ledger available on demand.",
       "Separate visual treatments distinguish incoming money, spending, and allocation.",
       "Documented privacy masking keeps sensitive values hidden without changing the layout."
-    ]
+    ],
+    "previewVideo": "/projects/previews/gcash-preview.mp4"
   },
   {
     "id": "vibra",
@@ -52,7 +62,12 @@
     "summary": "Sound, given a sculptural presence.",
     "description": "An audio-visual instrument with an editorial gallery and an interactive listening studio. A Three.js sculpture turns musical energy into form, with controls that let the listener shape the visual response.",
     "role": "Personal project · Sole creator",
-    "stack": ["Next.js", "TypeScript", "Three.js", "Web Audio API"],
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "Web Audio API"
+    ],
     "repo": "https://github.com/Aljeu/vibra",
     "url": "https://vibra-seven-opal.vercel.app/",
     "image": "/projects/vibra.webp",
@@ -66,7 +81,8 @@
       "An editorial homepage introduces the artwork before the listening controls.",
       "The studio keeps playback and visual tuning close to the sculpture.",
       "The documented visual response favors composed movement rather than reacting dramatically to every sound."
-    ]
+    ],
+    "previewVideo": "/projects/previews/vibra-preview.mp4"
   },
   {
     "id": "budget",
@@ -75,7 +91,12 @@
     "summary": "A workspace for exploring public budget information.",
     "description": "A personal research interface for browsing statutory budget records, comparing funding trajectories, and keeping source references near the analysis. The portfolio focuses on information organization and the investigative workflow.",
     "role": "Personal project · Sole creator",
-    "stack": ["Python", "Flask", "SQLite", "JavaScript"],
+    "stack": [
+      "Python",
+      "Flask",
+      "SQLite",
+      "JavaScript"
+    ],
     "repo": "https://github.com/Aljeu/ph-budget-investigator",
     "url": "https://aljeu.github.io/ph-budget-investigator/",
     "image": "/projects/ph-budget-investigator.png",
@@ -89,7 +110,8 @@
       "Compare trajectories while preserving the distinction between allocations and spending.",
       "Keep references and methodological caveats adjacent to investigative views.",
       "Separate an indicator that prompts research from a conclusion supported by evidence."
-    ]
+    ],
+    "previewVideo": "/projects/previews/budget-preview.mp4"
   },
   {
     "id": "deadline",
@@ -98,7 +120,12 @@
     "summary": "A small desktop home for upcoming deadlines.",
     "description": "A personal macOS productivity widget that brings academic deadlines into a compact floating view. Priority, completion, and urgency states help organize what needs attention.",
     "role": "Personal project · Sole creator",
-    "stack": ["Electron", "React", "Python", "SQLite"],
+    "stack": [
+      "Electron",
+      "React",
+      "Python",
+      "SQLite"
+    ],
     "repo": "https://github.com/Aljeu/deadline-widget",
     "url": null,
     "image": "/projects/deadline-widget.jpg",
