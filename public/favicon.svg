@@ -1,1 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#7B171C"/><path d="m16 48 13-32h7l13 32h-8l-3-8H26l-3 8Zm13-15h6l-3-10Z" fill="#FFF7F5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <path fill="#8D2027" fill-rule="evenodd" d="M128 30 L240 223.99 L219.215 223.99 L197.282 186 L181.116 186 L203.05 223.99 L182.265 223.99 L160.332 186 L95.668 186 L73.735 223.99 L52.95 223.99 L74.884 186 L58.718 186 L36.785 223.99 L16 223.99 Z M128 66 L188.044 170 L171.879 170 L128 94 L84.121 170 L67.956 170 Z M128 130 L151.094 170 L104.906 170 Z"/>
+</svg>
