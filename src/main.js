@@ -223,7 +223,7 @@ window.addEventListener("popstate", navigate);
 // Explicit section links work across pages; ordinary homepage reloads start at the hero.
 history.scrollRestoration = "manual";
 if (!location.hash.startsWith("#project/")) {
-  const initialSection = ["#work", "#about", "#services", "#contact"].includes(location.hash)
+  const initialSection = ["#work", "#about", "#services", "#stories", "#contact"].includes(location.hash)
     ? document.getElementById(location.hash.slice(1))
     : null;
   history.replaceState(null, "", location.pathname + location.search);

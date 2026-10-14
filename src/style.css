@@ -244,20 +244,22 @@ summary {
   padding: 20px 32px;
 }
 .wordmark {
-  font: 700 28px/1 var(--display);
-  letter-spacing: -0.04em;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   min-height: 44px;
+  flex: 0 0 44px;
+  color: var(--accent);
 }
-.wordmark-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  border-radius: 2px;
-  align-self: center;
-  margin-top: 15px;
+.brand-symbol {
+  display: block;
+  width: 44px;
+  height: 44px;
+  fill: currentColor;
+  stroke: none;
+  flex: none;
 }
 .main-nav {
   display: flex;
@@ -491,6 +493,12 @@ legend {
   text-transform: none;
   color: var(--hero-muted);
   margin-bottom: 22px;
+}
+.hero-name {
+  color: var(--hero-ink);
+  font: 600 clamp(1rem, 1.45vw, 1.25rem)/1.2 var(--display);
+  letter-spacing: -0.02em;
+  margin-bottom: 5px;
 }
 .hero h1 {
   font-size: clamp(2.75rem, 4.45vw, 4.35rem);
@@ -1152,7 +1160,11 @@ legend {
   color: var(--muted);
 }
 .site-footer .wordmark {
-  font-size: 22px;
+  color: var(--accent);
+}
+.site-footer .brand-symbol {
+  width: 40px;
+  height: 40px;
 }
 .detail-back {
   display: inline-flex;
@@ -1633,6 +1645,9 @@ legend {
   box-shadow: 0 1px 0 var(--line);
   --focus: var(--header-scroll-ink);
 }
+.site-header.is-scrolled .wordmark {
+  color: var(--header-scroll-ink);
+}
 .appearance-panel {
   color: var(--ink);
   --focus: var(--accent);
@@ -1850,6 +1865,23 @@ legend {
   }
 }
 
+@media (max-width: 360px) {
+  .main-nav {
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .main-nav a {
+    font-size: 0.75rem;
+  }
+  .main-nav .nav-contact {
+    gap: 4px;
+  }
+  .main-nav svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
 /* One authored material scene. Text and navigation keep stable reading surfaces. */
 :root {
   --shader-a: #f5f4f0;
@@ -2063,6 +2095,7 @@ legend {
   }
 
   .hero-copy > .role,
+  .hero-copy > .hero-name,
   .hero-copy > .hero-support,
   .hero > .hero-title,
   .hero > .hero-action {
@@ -2075,6 +2108,14 @@ legend {
     top: 14%;
     left: 5.5%;
     max-width: 38%;
+  }
+
+  .hero-copy > .hero-name {
+    position: absolute;
+    top: 8.5%;
+    left: 5.5%;
+    margin: 0;
+    pointer-events: auto;
   }
 
   .hero > .hero-title {
@@ -2190,6 +2231,7 @@ legend {
   }
 
   .hero-copy > .role,
+  .hero-copy > .hero-name,
   .hero-copy > .hero-support,
   .hero > .hero-title,
   .hero > .hero-action {
@@ -2204,6 +2246,17 @@ legend {
     max-width: calc(100% - 48px);
     font-size: 0.875rem;
     line-height: 1.3;
+  }
+
+  .hero-copy > .hero-name {
+    position: absolute;
+    top: 4%;
+    left: 24px;
+    max-width: calc(100% - 48px);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.2;
+    pointer-events: auto;
   }
 
   .hero-copy > .hero-support {
@@ -2722,7 +2775,23 @@ legend {
 .stories-more-label { text-underline-offset: 4px; }
 .stories-more:hover .stories-more-label { text-decoration: underline; }
 .journal-archive { max-width: 1000px; }
-.journal-archive h1 { margin: 32px 0 20px; font: 700 clamp(3rem, 7vw, 6rem)/1.05 var(--display); letter-spacing: -.03em; }
+.journal-archive h1 {
+  margin: 32px 0 20px;
+  font-family: var(--display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+}
+.journal-archive .journal-preview h2 {
+  margin: 12px 0;
+  max-width: 28ch;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 1.65vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+}
 .journal-intro { max-width: 60ch; color: var(--muted); line-height: 1.6; }
 
 /* Carry the contact surface through the footer as one full-bleed band. */
@@ -2747,6 +2816,9 @@ legend {
 .site-footer .wordmark,
 .site-footer .text-link {
   color: var(--hero-ink);
+}
+.site-footer .wordmark {
+  color: var(--accent);
 }
 .contact.shell {
   padding-top: 40px;
